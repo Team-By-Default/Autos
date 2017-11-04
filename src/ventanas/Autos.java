@@ -15,9 +15,12 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.event.ActionEvent;
 
 public class Autos extends JFrame {
+	private HashMap<Automovil, ArrayList<Venta>> ventas;
 
 	private JPanel contentPane;
 
@@ -41,6 +44,9 @@ public class Autos extends JFrame {
 	 * Create the frame.
 	 */
 	public Autos() {
+		
+		ventas = new HashMap<Automovil, ArrayList<Venta>>();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
