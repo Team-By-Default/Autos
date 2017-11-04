@@ -66,15 +66,17 @@ public class VentanaPpal extends JFrame {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Ventana ventanita = new Ventana(this);
-				//DISPARAR VENTANA AGREGAR
-				
 			}
 		});
 		btnAgregar.setBounds(282, 177, 89, 23);
 		contentPane.add(btnAgregar);
 	}
 	
-	public void agregarVta(Automovil auto, Venta vta){
-		
+	public void agregarVta(Automovil auto, Venta venta){
+		ArrayList vtas = this.ventas.get(auto);
+		if(vtas == null)
+			vtas = new ArrayList<Venta>();
+		vtas.add(venta);
+		this.ventas.put(auto, vtas);
 	}
 }
