@@ -6,6 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.BoxLayout;
+import javax.swing.JList;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Autos extends JFrame {
 
@@ -35,8 +45,26 @@ public class Autos extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JList listaVtas = new JList();
+		listaVtas.setBounds(45, 240, 140, -221);
+		contentPane.add(listaVtas);
+		
+		JList listaResumen = new JList();
+		listaResumen.setBounds(423, 31, -201, 107);
+		contentPane.add(listaResumen);
+		
+		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//DISPARAR VENTANA AGREGAR
+				
+			}
+		});
+		btnAgregar.setBounds(282, 177, 89, 23);
+		contentPane.add(btnAgregar);
 	}
-
 }
