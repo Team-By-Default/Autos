@@ -119,8 +119,8 @@ public class Ventana extends JDialog {
 				JButton aceptarButton = new JButton("Aceptar");
 				aceptarButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
-						
+						Automovil fitito = new Automovil(marcaCombobox.toString(),modeloVentana.toString(),anioVentana.getItemAt(0));
+						Venta ven = new Venta(comvertir(mesVentana.toString()),precioVentanqa.getText());
 					}
 				});
 				aceptarButton.setActionCommand("OK");
@@ -132,7 +132,50 @@ public class Ventana extends JDialog {
 				cancelarButton.setActionCommand("Cancel");
 				buttonPane.add(cancelarButton);
 			}
+			
 		}
 		
 	}
+	
+	public int comvertir(String mes){
+		if (mes.equals("Enero")) {
+			return 1;
+		}
+		if (mes.equals("Febrero")) {
+			return 2;
+		}
+		if (mes.equals("Marzo")) {
+			return 3;
+		}
+		if (mes.equals("Abril")) {
+			return 4;
+		}
+		if (mes.equals("Mayo")) {
+			return 5;
+		}
+		if (mes.equals("Junio")) {
+			return 6;
+		}
+		if (mes.equals("Julio")) {
+			return 7;
+		}
+		if (mes.equals("Agosto")) {
+			return 8;
+		}
+		if (mes.equals("Septiembre")) {
+			return 9;
+		}
+		if (mes.equals("Octubre")) {
+			return 10;
+		}
+		if (mes.equals("Noviembre")) {
+			return 11;
+		}
+		if (mes.equals("Diciembre")) {
+			return 12;
+		}
+		return 0;
+		
+	}
+	
 }

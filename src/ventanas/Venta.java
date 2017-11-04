@@ -2,9 +2,9 @@ package ventanas;
 
 public class Venta {
 	private int mes;
-	private int precio;
+	private float precio;
 	
-	public Venta(int mes, int precio){
+	public Venta(int mes, float precio){
 		this.setMes(mes);
 		this.setPrecio(precio);
 	}
@@ -17,7 +17,7 @@ public class Venta {
 		this.mes = mes;
 	}
 
-	public int getPrecio() {
+	public float getPrecio() {
 		return precio;
 	}
 
