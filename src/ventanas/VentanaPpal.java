@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
 
-public class Autos extends JFrame {
+public class VentanaPpal extends JFrame {
 	private HashMap<Automovil, ArrayList<Venta>> ventas;
 
 	private JPanel contentPane;
@@ -31,7 +31,7 @@ public class Autos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Autos frame = new Autos();
+					VentanaPpal frame = new VentanaPpal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class Autos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Autos() {
+	public VentanaPpal() {
 		
 		ventas = new HashMap<Automovil, ArrayList<Venta>>();
 		
@@ -65,12 +65,18 @@ public class Autos extends JFrame {
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				//DISPARAR VENTANA AGREGAR
-				
+				Ventana ventanita = new Ventana(this);
 			}
 		});
 		btnAgregar.setBounds(282, 177, 89, 23);
 		contentPane.add(btnAgregar);
+	}
+	
+	public void agregarVta(Automovil auto, Venta venta){
+		ArrayList vtas = this.ventas.get(auto);
+		if(vtas == null)
+			vtas = new ArrayList<Venta>();
+		vtas.add(venta);
+		this.ventas.put(auto, vtas);
 	}
 }
