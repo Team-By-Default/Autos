@@ -17,10 +17,14 @@ import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.awt.event.ActionEvent;
 
 public class VentanaPpal extends JFrame {
 	private HashMap<Automovil, ArrayList<Venta>> ventas;
+	private JList listaVtas;
+	private JList listaResumen;
 
 	private JPanel contentPane;
 
@@ -54,11 +58,11 @@ public class VentanaPpal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JList listaVtas = new JList();
+		this.listaVtas = new JList();
 		listaVtas.setBounds(45, 240, 140, -221);
 		contentPane.add(listaVtas);
 		
-		JList listaResumen = new JList();
+		this.listaResumen = new JList();
 		listaResumen.setBounds(423, 31, -201, 107);
 		contentPane.add(listaResumen);
 		
@@ -78,5 +82,49 @@ public class VentanaPpal extends JFrame {
 			vtas = new ArrayList<Venta>();
 		vtas.add(venta);
 		this.ventas.put(auto, vtas);
+	}
+	
+	private void actualizarListas(){
+		ArrayList<Venta> ventaaux;
+		Automovil autoaux;
+		int prom,min,max;
+		for(Entry<Automovil, ArrayList<Venta>> entry : ventas.entrySet()){
+
+			autoaux = entry.getKey();
+			ventaaux = entry.getValue();
+			min=minimo(ventaaux);
+			max=maximo(ventaaux);
+			prom=promedio(ventaaux);
+			
+			
+			
+			//mostrar en la ventana Marca, Modelo y Año de autoaux y prom, min y max de ese Automovil
+		}
+	}
+	
+	public static int promedio(ArrayList<Venta> ventas){
+		int prom=0;
+		for(int i=0; i<ventas.size(); i++)
+			prom+=ventas.get(i).getPrecio();
+		prom=prom/ventas.size();
+		return prom;
+	}
+
+	public static int minimo(ArrayList<Venta> ventas){
+		int min=0;
+		for(int i=0; i<ventas.size(); i++){
+			if(ventas.get(i).getPrecio()<min)
+				min=ventas.get(i).getPrecio();
+		}
+		return min;
+	}
+
+	public static int maximo(ArrayList<Venta> ventas){
+		int max=0;
+		for(int i=0; i<ventas.size(); i++){
+			if(ventas.get(i).getPrecio()>max)
+				max=ventas.get(i).getPrecio();
+		}
+		return max;
 	}
 }
