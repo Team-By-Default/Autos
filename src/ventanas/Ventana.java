@@ -18,7 +18,6 @@ import javax.swing.JComboBox;
 public class Ventana extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField marcaVentana;
 	private JTextField modeloVentana;
 	private JTextField precioVentanqa;
 
@@ -38,7 +37,7 @@ public class Ventana extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public Ventana() {
+	public Ventana( ) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,11 +51,6 @@ public class Ventana extends JDialog {
 		Label mes = new Label("Mes");
 		mes.setBounds(228, 23, 62, 22);
 		contentPanel.add(mes);
-		
-		marcaVentana = new JTextField();
-		marcaVentana.setBounds(190, 72, 120, 20);
-		contentPanel.add(marcaVentana);
-		marcaVentana.setColumns(10);
 		
 		modeloVentana = new JTextField();
 		modeloVentana.setBounds(190, 103, 120, 20);
@@ -80,22 +74,53 @@ public class Ventana extends JDialog {
 		precio.setBounds(114, 137, 46, 14);
 		contentPanel.add(precio);
 		
-		JComboBox anioVentana = new JComboBox();
-		anioVentana.setBounds(60, 23, 120, 20);
+		JComboBox<Integer> anioVentana = new JComboBox<Integer>();
+		for (int i = 1990; i < 2018 ; i++) {
+			anioVentana.addItem(i);
+		}
+		anioVentana.setMaximumRowCount(20);
+		anioVentana.setSelectedIndex(-1);
+		anioVentana.setBounds(74, 23, 106, 20);
 		contentPanel.add(anioVentana);
 		
-		JComboBox mesVentana = new JComboBox();
+		JComboBox<String> mesVentana = new JComboBox<String>();
+		mesVentana.addItem("Enero");
+		mesVentana.addItem("Febrero");
+		mesVentana.addItem("Marzo");
+		mesVentana.addItem("Abril");
+		mesVentana.addItem("Mayo");
+		mesVentana.addItem("Junio");
+		mesVentana.addItem("Julio");
+		mesVentana.addItem("Agosto");
+		mesVentana.addItem("Septiembre");
+		mesVentana.addItem("Octubre");
+		mesVentana.addItem("Noviembre");
+		mesVentana.addItem("Diciembre");
+		mesVentana.setMaximumRowCount(12);
+		mesVentana.setSelectedIndex(-1);
 		mesVentana.setBounds(296, 25, 106, 22);
 		contentPanel.add(mesVentana);
+		
+		JComboBox<String> marcaCombobox = new JComboBox<String>();
+		marcaCombobox.addItem("Fiat");marcaCombobox.addItem("Fiat");
+		marcaCombobox.addItem("Crevrolet");
+		marcaCombobox.addItem("Renault");
+		marcaCombobox.addItem("Citroen");
+		marcaCombobox.setMaximumRowCount(20);
+		marcaCombobox.setSelectedIndex(-1);
+		marcaCombobox.setBounds(190, 72, 120, 20);
+		contentPanel.add(marcaCombobox);
 		{
+	
 			JPanel buttonPane = new JPanel();
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			{
-				anioVentana.setSelectedItem(1900);
 				JButton aceptarButton = new JButton("Aceptar");
 				aceptarButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						
+						
 					}
 				});
 				aceptarButton.setActionCommand("OK");
