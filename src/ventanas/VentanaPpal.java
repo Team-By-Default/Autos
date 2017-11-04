@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.ListModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
 import javax.swing.JList;
@@ -14,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.List;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +25,7 @@ import java.awt.event.ActionEvent;
 
 public class VentanaPpal extends JFrame {
 	private HashMap<Automovil, ArrayList<Venta>> ventas;
+	private ArrayList<Resumen> resumenes;
 	private JList listaVtas;
 	private JList listaResumen;
 
@@ -50,6 +53,7 @@ public class VentanaPpal extends JFrame {
 	public VentanaPpal() {
 		
 		ventas = new HashMap<Automovil, ArrayList<Venta>>();
+		resumenes = new ArrayList<Resumen>();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -88,6 +92,10 @@ public class VentanaPpal extends JFrame {
 		ArrayList<Venta> ventaaux;
 		Automovil autoaux;
 		int prom,min,max;
+		
+		this.listaVtas.setModel((ListModel) this.ventas);
+		ArrayList resumenes = new ArrayList<Resumen>();
+		
 		for(Entry<Automovil, ArrayList<Venta>> entry : ventas.entrySet()){
 
 			autoaux = entry.getKey();
@@ -96,8 +104,10 @@ public class VentanaPpal extends JFrame {
 			max=maximo(ventaaux);
 			prom=promedio(ventaaux);
 			
+			Resumen res = new Resumen(autoaux, min, max, prom);
+			resumenes.add(res);
 			
-			
+			this.listaResumen.setModel((ListModel) resumenes);
 			//mostrar en la ventana Marca, Modelo y Año de autoaux y prom, min y max de ese Automovil
 		}
 	}
